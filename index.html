@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INK & IMPACT™ — Where Young Leaders Become Published Authors</title>
+  <meta name="description" content="The next generation has something to say. We help them publish it. INK & IMPACT™ is a selective 16-week publishing accelerator turning young leaders ages 7–18 into real, globally distributed authors. One investment. A published book for life.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0A0A0A;
+      --ink-soft: #141414;
+      --ink-mid: #1E1E1E;
+      --purple: #534AB7;
+      --purple-light: #7F77DD;
+      --purple-glow: rgba(83,74,183,0.15);
+      --purple-border: rgba(83,74,183,0.35);
+      --white: #FFFFFF;
+      --white-80: rgba(255,255,255,0.8);
+      --white-55: rgba(255,255,255,0.55);
+      --white-35: rgba(255,255,255,0.35);
+      --white-15: rgba(255,255,255,0.15);
+      --white-08: rgba(255,255,255,0.08);
+      --white-04: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+      --sprout: #1D9E75;
+      --sprout-light: #5DCAA5;
+      --sprout-bg: rgba(29,158,117,0.1);
+      --sprout-border: rgba(29,158,117,0.3);
+      --rise: #534AB7;
+      --rise-light: #AFA9EC;
+      --rise-bg: rgba(83,74,183,0.12);
+      --rise-border: rgba(83,74,183,0.35);
+      --legacy: #D85A30;
+      --legacy-light: #F0997B;
+      --legacy-bg: rgba(216,90,48,0.1);
+      --legacy-border: rgba(216,90,48,0.3);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.5;
+    }
+
+    * { position: relative; z-index: 1; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes pulse-border {
+      0%, 100% { border-color: var(--purple-border); }
+      50%       { border-color: rgba(83,74,183,0.6); }
+    }
+
+    .fade-up {
+      animation: fadeUp 0.7s ease both;
+    }
+    .fade-up-delay-1 { animation-delay: 0.1s; }
+    .fade-up-delay-2 { animation-delay: 0.2s; }
+    .fade-up-delay-3 { animation-delay: 0.3s; }
+    .fade-up-delay-4 { animation-delay: 0.4s; }
+    .fade-up-delay-5 { animation-delay: 0.5s; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand { display: flex; flex-direction: column; gap: 2px; }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 15px;
+      letter-spacing: 0.1em;
+      color: var(--white);
+    }
+    .nav-sub {
+      font-size: 11px;
+      color: var(--white-35);
+      letter-spacing: 0.04em;
+    }
+    .nav-cta {
+      background: var(--purple);
+      border: none;
+      border-radius: 6px;
+      padding: 9px 20px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white);
+      cursor: pointer;
+      font-family: var(--sans);
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .nav-cta:hover { background: #3C3489; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 8rem 2.5rem 6rem;
+      text-align: center;
+      border-bottom: 0.5px solid var(--border);
+      overflow: hidden;
+      position: relative;
+      background-image: url('https://raw.githubusercontent.com/elevate360collective/inkandimpact/main/hero.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,10,0.75) 0%,
+        rgba(10,10,10,0.65) 50%,
+        rgba(10,10,10,0.92) 100%
+      );
+      z-index: 0;
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(83,74,183,0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--purple-light);
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 6vw, 58px);
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 em {
+      color: var(--purple-light);
+      font-style: italic;
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--white-55);
+      line-height: 1.75;
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+    }
+    .cta-primary {
+      display: inline-block;
+      background: var(--purple);
+      border: none;
+      border-radius: 8px;
+      padding: 16px 36px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--white);
+      cursor: pointer;
+      font-family: var(--sans);
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 0 0 0 rgba(83,74,183,0);
+    }
+    .cta-primary:hover {
+      background: #3C3489;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(83,74,183,0.3);
+    }
+    .cta-note {
+      font-size: 12px;
+      color: var(--white-35);
+      margin-top: 12px;
+      display: block;
+    }
+    .pill-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+    .pill {
+      background: rgba(83,74,183,0.12);
+      border: 0.5px solid var(--purple-border);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 12px;
+      color: var(--rise-light);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 5rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .sec-inner { max-width: 900px; margin: 0 auto; }
+    .sec-eye {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: var(--purple-light);
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      text-align: center;
+      display: block;
+    }
+    .sec-title {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3.5vw, 36px);
+      color: var(--white);
+      text-align: center;
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+    .sec-sub {
+      font-size: 15px;
+      color: var(--white-55);
+      text-align: center;
+      max-width: 500px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+    }
+
+    /* ── MOMENT BOX ── */
+    .moment-box {
+      background: var(--purple-glow);
+      border: 0.5px solid var(--purple-border);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      animation: pulse-border 4s ease-in-out infinite;
+    }
+    .moment-quote {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2.5vw, 26px);
+      color: var(--white);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .moment-attr {
+      font-size: 13px;
+      color: var(--white-35);
+    }
+
+    /* ── TRACKS ── */
+    .tracks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .track {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 0.5px solid rgba(255,255,255,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .track:hover {
+      transform: translateY(-4px);
+    }
+    .track-header { padding: 1.5rem; }
+    .track-age {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .track-name {
+      font-family: var(--serif);
+      font-size: 20px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .track-tagline {
+      font-size: 13px;
+      line-height: 1.5;
+      opacity: 0.7;
+      display: block;
+    }
+    .track-body {
+      background: rgba(255,255,255,0.03);
+      padding: 1.25rem 1.5rem;
+      border-top: 0.5px solid rgba(255,255,255,0.06);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .track-feat {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--white-55);
+      line-height: 1.5;
+    }
+    .track-feat-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Track colors */
+    .t-sprout .track-header { background: var(--sprout-bg); border-bottom: 0.5px solid var(--sprout-border); }
+    .t-sprout .track-age { color: var(--sprout-light); }
+    .t-sprout .track-name { color: #9FE1CB; }
+    .t-sprout:hover { box-shadow: 0 16px 48px rgba(29,158,117,0.15); }
+
+    .t-rise .track-header { background: var(--rise-bg); border-bottom: 0.5px solid var(--rise-border); }
+    .t-rise .track-age { color: var(--rise-light); }
+    .t-rise .track-name { color: #CECBF6; }
+    .t-rise:hover { box-shadow: 0 16px 48px rgba(83,74,183,0.2); }
+
+    .t-legacy .track-header { background: var(--legacy-bg); border-bottom: 0.5px solid var(--legacy-border); }
+    .t-legacy .track-age { color: var(--legacy-light); }
+    .t-legacy .track-name { color: #F5C4B3; }
+    .t-legacy:hover { box-shadow: 0 16px 48px rgba(216,90,48,0.15); }
+
+    .tracks-note {
+      font-size: 12px;
+      color: var(--white-35);
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    /* ── VALUE GRID ── */
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+    }
+    .val-card {
+      background: var(--white-04);
+      border: 0.5px solid var(--white-08);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .val-card:hover {
+      background: rgba(83,74,183,0.08);
+      border-color: var(--purple-border);
+    }
+    .val-icon {
+      font-size: 22px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .val-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .val-desc {
+      font-size: 13px;
+      color: var(--white-55);
+      line-height: 1.6;
+    }
+
+    /* ── WHAT GRID ── */
+    .what-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+    }
+    .what-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 1rem 1.1rem;
+      background: var(--white-04);
+      border: 0.5px solid var(--white-08);
+      border-radius: 10px;
+      transition: border-color 0.2s;
+    }
+    .what-item:hover { border-color: var(--purple-border); }
+    .chk {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--purple-glow);
+      border: 0.5px solid var(--purple-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .chk svg { width: 12px; height: 12px; stroke: var(--purple-light); stroke-width: 2.5; fill: none; }
+    .wi-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--white);
+      display: block;
+      margin-bottom: 2px;
+    }
+    .wi-desc {
+      font-size: 12px;
+      color: var(--white-55);
+      line-height: 1.5;
+    }
+
+    /* ── JOURNEY ── */
+    .journey { max-width: 580px; margin: 0 auto; }
+    .j-step { display: flex; gap: 20px; align-items: flex-start; }
+    .j-left { display: flex; flex-direction: column; align-items: center; min-width: 40px; }
+    .j-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--purple);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--white);
+      flex-shrink: 0;
+      font-family: var(--serif);
+    }
+    .j-line { width: 1px; background: rgba(83,74,183,0.2); flex: 1; min-height: 36px; }
+    .j-content { padding-bottom: 2rem; }
+    .j-phase {
+      font-size: 11px;
+      color: var(--purple-light);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .j-title {
+      font-family: var(--serif);
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .j-desc { font-size: 14px; color: var(--white-55); line-height: 1.65; }
+
+    /* ── PRICE BOX ── */
+    .price-wrap { max-width: 460px; margin: 0 auto; }
+    .price-box {
+      background: rgba(83,74,183,0.08);
+      border: 1.5px solid var(--purple);
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(83,74,183,0.15);
+    }
+    .price-eye {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: var(--purple-light);
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .price-num {
+      font-family: var(--serif);
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      display: block;
+    }
+    .price-per {
+      font-size: 13px;
+      color: var(--white-35);
+      margin-top: 6px;
+      margin-bottom: 2rem;
+      display: block;
+    }
+    .price-list { text-align: left; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0; }
+    .p-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 0.5px solid var(--white-08);
+      font-size: 13px;
+      color: var(--white-55);
+    }
+    .p-row:last-child { border-bottom: none; }
+    .p-row svg { width: 16px; height: 16px; stroke: var(--purple-light); stroke-width: 2.5; fill: none; flex-shrink: 0; }
+    .price-cta {
+      display: block;
+      width: 100%;
+      background: var(--purple);
+      border: none;
+      border-radius: 8px;
+      padding: 15px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--white);
+      cursor: pointer;
+      font-family: var(--sans);
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .price-cta:hover { background: #3C3489; transform: translateY(-1px); }
+    .price-urgency {
+      font-size: 12px;
+      color: var(--white-35);
+      margin-top: 10px;
+      display: block;
+    }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 640px; margin: 0 auto; }
+    details {
+      border-bottom: 0.5px solid var(--border);
+      padding: 1.25rem 0;
+    }
+    details:first-child { border-top: 0.5px solid var(--border); }
+    summary {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--white);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+';
+      font-size: 20px;
+      color: var(--purple-light);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+    .faq-a {
+      font-size: 14px;
+      color: var(--white-55);
+      line-height: 1.7;
+      margin-top: 0.75rem;
+      padding-right: 2rem;
+    }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      padding: 6rem 2.5rem;
+      text-align: center;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .final-cta h2 {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2.5rem;
+      text-align: center;
+      border-top: 0.5px solid var(--border);
+    }
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--white-35);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .footer-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.25rem; }
+      .hero { padding: 4rem 1.25rem 3.5rem; }
+      section { padding: 3.5rem 1.25rem; }
+      .moment-box { padding: 2rem 1.25rem; }
+      .price-box { padding: 2rem 1.25rem; }
+      .final-cta { padding: 4rem 1.25rem; }
+      footer { padding: 2rem 1.25rem; }
+    }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://www.elevate360collective.com" target="_blank" style="text-decoration:none">
+    <div class="nav-brand">
+      <span class="nav-logo">INK &amp; IMPACT™</span>
+      <span class="nav-sub">by Elevate 360 Collective</span>
+    </div>
+  </a>
+  <a href="https://tally.so/r/D4ALWp" target="_blank" class="nav-cta">Apply now</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="eyebrow fade-up">Founding Cohort 001 — Ages 7–18 — Limited Spots</span>
+  <h1 class="fade-up fade-up-delay-1">
+    Your child has a story.<br>
+    We help them <em>publish it.</em>
+  </h1>
+  <p class="hero-sub fade-up fade-up-delay-2">
+    INK &amp; IMPACT™ is a 16-week guided publishing accelerator for young leaders ages 7–18. Every child is coached from blank page to finished, globally distributed book — no matter their age or experience.
+  </p>
+  <!-- 🔗 Replace href="#" with your Tally form link -->
+  <a href="https://tally.so/r/D4ALWp" target="_blank" class="cta-primary fade-up fade-up-delay-3">Apply for your child — start here</a>
+  <span class="cta-note fade-up fade-up-delay-4">Application + interview required &nbsp;·&nbsp; Selective cohort &nbsp;·&nbsp; Max 25 participants</span>
+  <div class="pill-row fade-up fade-up-delay-5">
+    <span class="pill">Ages 7–18</span>
+    <span class="pill">Three age tracks</span>
+    <span class="pill">Professionally published book</span>
+    <span class="pill">Amazon + global distribution</span>
+    <span class="pill">No extra publishing fees</span>
+  </div>
+</div>
+
+<!-- MOMENT -->
+<section>
+  <div class="sec-inner">
+    <div class="moment-box reveal">
+      <p class="moment-quote">
+        "Imagine the day your child holds their published book — their name on the cover, their words inside, their legacy already started. At any age, that moment changes everything."
+      </p>
+      <p class="moment-attr">— That moment is exactly what INK &amp; IMPACT™ is built to create.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THREE TRACKS -->
+<section>
+  <div class="sec-inner">
+    <span class="sec-eye reveal">Three tracks. One mission.</span>
+    <h2 class="sec-title reveal">A publishing path built<br>for every age.</h2>
+    <p class="sec-sub reveal">Every participant is placed in an age-appropriate track with peers at their level — same professional outcome, same published book, coaching tailored to where they are.</p>
+    <div class="tracks-grid reveal">
+
+      <div class="track t-sprout">
+        <div class="track-header">
+          <span class="track-age">Ages 7–11</span>
+          <span class="track-name">The Sprout Track</span>
+          <span class="track-tagline">Young voices finding their story for the very first time.</span>
+        </div>
+        <div class="track-body">
+          <div class="track-feat">
+            <svg class="track-feat-icon" viewBox="0 0 24 24" fill="none" stroke="#5DCAA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12M12 12C12 7 7 4 3 6M12 12C12 7 17 4 21 6"/></svg>
+            <span>Guided storytelling with age-appropriate coaching</span>
+          </div>
+          <div class="track-feat">
+            <svg class="track-feat-icon" viewBox="0 0 24 24" fill="none" stroke="#5DCAA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>Illustrated or chapter book formats welcome</span>
+          </div>
+          <div class="track-feat">
+            <svg class="track-feat-icon" viewBox="0 0 24 24" fill="none" stroke="#5DCAA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            <span>Builds confidence, creativity, and follow-through</span>
+          </div>
+          <div class="track-feat">
+            <svg class="track-feat-icon" viewBox="0 0 24 24" fill="none" stroke="#5DCAA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+            <span>Same published outcome — real book, real ISBN</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="track t-rise">
+        <div class="track-header">
+          <span class="track-age">Ages 12–15</span>
+          <span class="track-name">The Rise Track</span>
+          <span class="track-tagline">Emerging leaders turning big ideas into powerful words.</span>
+        </div>
+        <div class="track-body">
+          <div class="track-feat">
+            <svg class="track-feat-icon" viewBox="0 0 24 24" fill="none" stroke="#AFA9EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+            <span>Deep identity work — who am I, what do I stand for</span>
+          </div>
+          <div class="track-feat">
+            <svg class="track-feat-icon" viewBox="0 0 24 24" fill="none" stroke="#AFA9EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            <span>Cohort of peers navigating the same season of life</span>
+          </div>
+          <div class="track-feat">
+            <svg class="track-feat-icon" viewBox="0 0 24 24" fill="none" stroke="#AFA9EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            <span>Leadership and discipline woven into every session</span>
+          </div>
+          <div class="track-feat">
+            <svg class="track-feat-icon" viewBox="0 0 24 24" fill="none" stroke="#AFA9EC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+            <span>Full manuscript development and professional publish</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="track t-legacy">
+        <div class="track-header">
+          <span class="track-age">Ages 16–18</span>
+          <span class="track-name">The Legacy Track</span>
+          <span class="track-tagline">Ambitious young adults building their platform and proof.</span>
+        </div>
+        <div class="track-body">
+          <div class="track-feat">
+            <svg class="track-feat-icon" viewBox="0 0 24 24" fill="none" stroke="#F0997B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            <span>College application and personal brand positioning</span>
+          </div>
+          <div class="track-feat">
+            <svg class="track-feat-icon" viewBox="0 0 24 24" fill="none" stroke="#F0997B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>Advanced manuscript structure and voice development</span>
+          </div>
+          <div class="track-feat">
+            <svg class="track-feat-icon" viewBox="0 0 24 24" fill="none" stroke="#F0997B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+            <span>Leadership certification from Elevate 360 Collective</span>
+          </div>
+          <div class="track-feat">
+            <svg class="track-feat-icon" viewBox="0 0 24 24" fill="none" stroke="#F0997B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <span>Globally distributed book — Amazon + major retailers</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p class="tracks-note reveal">Track placement confirmed during the application interview based on age and readiness.</p>
+  </div>
+</section>
+
+<!-- WHY PARENTS -->
+<section>
+  <div class="sec-inner">
+    <span class="sec-eye reveal">Why parents choose this</span>
+    <h2 class="sec-title reveal">More than a writing class.<br>A life-defining experience.</h2>
+    <p class="sec-sub reveal">At every age, INK &amp; IMPACT™ builds something that lasts long after the 16 weeks end.</p>
+    <div class="value-grid reveal">
+      <div class="val-card">
+        <span class="val-icon">👑</span>
+        <span class="val-title">A legacy asset they own</span>
+        <p class="val-desc">Their published book is theirs forever — on Amazon, in the world, and in your home.</p>
+      </div>
+      <div class="val-card">
+        <span class="val-icon">✅</span>
+        <span class="val-title">No extra publishing costs</span>
+        <p class="val-desc">ISBN, cover design, formatting, and global distribution are all included in the one-time fee.</p>
+      </div>
+      <div class="val-card">
+        <span class="val-icon">✍️</span>
+        <span class="val-title">Expert coaching at every step</span>
+        <p class="val-desc">A dedicated writing coach guides every manuscript session — no child gets left stuck.</p>
+      </div>
+      <div class="val-card">
+        <span class="val-icon">📈</span>
+        <span class="val-title">Discipline and leadership built in</span>
+        <p class="val-desc">Weekly leadership sessions teach your child how to think, commit, and finish what they start.</p>
+      </div>
+      <div class="val-card">
+        <span class="val-icon">⭐</span>
+        <span class="val-title">A standout achievement</span>
+        <p class="val-desc">A published book at any age from 7 to 18 is remarkable — on applications, in interviews, and in life.</p>
+      </div>
+      <div class="val-card">
+        <span class="val-icon">🎉</span>
+        <span class="val-title">Formal book launch event</span>
+        <p class="val-desc">Every cohort ends with a real launch celebration — a memory your whole family keeps forever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT THEY GET -->
+<section>
+  <div class="sec-inner">
+    <span class="sec-eye reveal">What your child walks away with</span>
+    <h2 class="sec-title reveal">Everything included.<br>Nothing left unfinished.</h2>
+    <p class="sec-sub reveal">Every participant across all three tracks receives the same complete, professional publishing package.</p>
+    <div class="reveal" style="text-align:center;margin-bottom:3rem">
+      <img src="https://raw.githubusercontent.com/elevate360collective/inkandimpact/main/bookmockup.jpg" alt="INK & IMPACT published book mockup" style="max-width:480px;width:100%;border-radius:12px;box-shadow:0 24px 80px rgba(83,74,183,0.3)">
+      <p style="font-size:13px;color:rgba(255,255,255,0.35);margin-top:1rem;font-family:'DM Sans',sans-serif">This is what your child walks away with — a real, professionally published book.</p>
+    </div>
+    <div class="what-grid reveal">
+      <div class="what-item">
+        <div class="chk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><span class="wi-title">Professionally edited published book</span><span class="wi-desc">Full manuscript editing and polish included</span></div>
+      </div>
+      <div class="what-item">
+        <div class="chk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><span class="wi-title">ISBN + global distribution</span><span class="wi-desc">Available on Amazon and major retailers worldwide</span></div>
+      </div>
+      <div class="what-item">
+        <div class="chk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><span class="wi-title">Professional cover design</span><span class="wi-desc">Custom designed — not a generic template</span></div>
+      </div>
+      <div class="what-item">
+        <div class="chk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><span class="wi-title">Interior formatting</span><span class="wi-desc">Print-ready, professionally laid out</span></div>
+      </div>
+      <div class="what-item">
+        <div class="chk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><span class="wi-title">Formal book launch experience</span><span class="wi-desc">A celebration to mark this extraordinary achievement</span></div>
+      </div>
+      <div class="what-item">
+        <div class="chk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><span class="wi-title">Leadership certification</span><span class="wi-desc">Issued by Elevate 360 Collective (ages 12–18)</span></div>
+      </div>
+      <div class="what-item">
+        <div class="chk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><span class="wi-title">Monthly parent progress updates</span><span class="wi-desc">You'll always know exactly where your child stands</span></div>
+      </div>
+      <div class="what-item">
+        <div class="chk"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><span class="wi-title">Royalties through Veritas Publishing</span><span class="wi-desc">Your child earns from every book sold — it's their book</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section>
+  <div class="sec-inner">
+    <span class="sec-eye reveal">The 16-week journey</span>
+    <h2 class="sec-title reveal">From blank page<br>to published author.</h2>
+    <p class="sec-sub reveal">Every week is structured, purposeful, and coached. No child finishes this program without a completed book.</p>
+    <div class="journey reveal">
+      <div class="j-step">
+        <div class="j-left"><div class="j-num">1</div><div class="j-line"></div></div>
+        <div class="j-content">
+          <span class="j-phase">Weeks 1–4</span>
+          <span class="j-title">Identity &amp; framework</span>
+          <p class="j-desc">Your child discovers their voice, defines their message, and builds the foundation of their book with expert coaching designed for their age track.</p>
+        </div>
+      </div>
+      <div class="j-step">
+        <div class="j-left"><div class="j-num">2</div><div class="j-line"></div></div>
+        <div class="j-content">
+          <span class="j-phase">Weeks 5–12</span>
+          <span class="j-title">Manuscript development</span>
+          <p class="j-desc">The heart of the program — weekly writing and coaching sessions, accountability check-ins, and a midpoint manuscript checkpoint at week 8 so nothing falls behind.</p>
+        </div>
+      </div>
+      <div class="j-step">
+        <div class="j-left"><div class="j-num">3</div><div class="j-line"></div></div>
+        <div class="j-content">
+          <span class="j-phase">Weeks 13–16</span>
+          <span class="j-title">Revision, polish &amp; publishing</span>
+          <p class="j-desc">Manuscript handed to publishing partners. Professional editing, cover design, and global distribution setup begins. Your child sees their book come to life.</p>
+        </div>
+      </div>
+      <div class="j-step">
+        <div class="j-left"><div class="j-num">4</div></div>
+        <div class="j-content">
+          <span class="j-phase">After week 16</span>
+          <span class="j-title">Book launch &amp; celebration</span>
+          <p class="j-desc">Your child is officially a published author. A formal launch event closes the cohort. This is the moment you both remember forever.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DRAGONFLY SPONSOR -->
+<section>
+  <div class="sec-inner">
+    <div class="reveal" style="background:linear-gradient(135deg,rgba(83,74,183,0.12),rgba(29,158,117,0.08));border:0.5px solid rgba(83,74,183,0.3);border-radius:16px;padding:2.5rem;text-align:center;max-width:680px;margin:0 auto">
+      <span style="font-size:11px;letter-spacing:0.16em;color:#5DCAA5;font-weight:500;text-transform:uppercase;font-family:'DM Sans',sans-serif;display:block;margin-bottom:1rem">Why publishing is included at no extra cost</span>
+      <h3 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(20px,3vw,28px);color:#fff;margin-bottom:1rem;line-height:1.3">Made possible by the<br><em style="color:#5DCAA5;font-style:italic">DragonFly Young Writers Fund</em></h3>
+      <p style="font-size:15px;color:rgba(255,255,255,0.6);line-height:1.75;font-family:'DM Sans',sans-serif;margin-bottom:1.5rem">Professional publishing typically costs thousands of dollars — cover design, ISBN, formatting, printing, and global distribution. For INK &amp; IMPACT™ participants, every one of those costs is covered. That's made possible through the generous support of the <strong style="color:#fff">DragonFly Young Writers Fund</strong>, whose mission is to remove financial barriers so young voices can be heard.</p>
+      <div style="background:rgba(29,158,117,0.1);border:0.5px solid rgba(29,158,117,0.3);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1.5rem">
+        <p style="font-size:14px;color:#9FE1CB;font-family:'DM Sans',sans-serif;line-height:1.6"><strong style="color:#fff">What DragonFly covers for every participant:</strong><br>Cover design &nbsp;·&nbsp; Interior formatting &nbsp;·&nbsp; ISBN registration &nbsp;·&nbsp; Print production &nbsp;·&nbsp; Amazon + global distribution</p>
+      </div>
+      <p style="font-size:13px;color:rgba(255,255,255,0.4);font-family:'DM Sans',sans-serif;line-height:1.6">The DragonFly Young Writers Fund is sustained by community donations and organizational partners. By enrolling your child in INK &amp; IMPACT™, you are also supporting a fund that makes publishing possible for young writers who need it most.</p>
+      <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:0.5px solid rgba(255,255,255,0.08)">
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);font-family:'DM Sans',sans-serif">Interested in supporting the DragonFly Young Writers Fund and helping more young authors get published? <a href="mailto:info@elevate360collective.com" style="color:#5DCAA5;text-decoration:none">Contact us to learn more.</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section>
+  <div class="sec-inner">
+    <span class="sec-eye reveal">Founding Cohort 001 pricing</span>
+    <h2 class="sec-title reveal">One investment.<br>A published author for life.</h2>
+    <p class="sec-sub reveal">Same price across all three age tracks. The founding cohort rate will not return after Cohort 001 closes.</p>
+    <div class="price-wrap reveal">
+      <div class="price-box">
+        <span class="price-eye">All tracks — founding rate</span>
+        <span class="price-num">$597</span>
+        <span class="price-per">one-time investment &nbsp;·&nbsp; ages 7–18 &nbsp;·&nbsp; all tracks</span>
+        <div class="price-list">
+          <div class="p-row"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>16 weeks of live leadership + manuscript sessions</div>
+          <div class="p-row"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Age-track placement + dedicated writing coach</div>
+          <div class="p-row"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Full manuscript editing + publishing prep</div>
+          <div class="p-row"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>ISBN, cover design, interior formatting</div>
+          <div class="p-row"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Amazon + global retail distribution</div>
+          <div class="p-row"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Formal book launch experience</div>
+          <div class="p-row"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Monthly parent progress updates</div>
+          <div class="p-row"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Leadership certification (ages 12–18)</div>
+        </div>
+        <a href="https://tally.so/r/D4ALWp" target="_blank" class="price-cta">Apply for your child — start here</a>
+        <span class="price-urgency">Max 25 participants across all tracks &nbsp;·&nbsp; Founding rate ends when cohort closes</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="sec-inner">
+    <span class="sec-eye reveal">Common questions from parents</span>
+    <h2 class="sec-title reveal">Honest answers<br>to what you're wondering.</h2>
+    <div class="faq-list reveal">
+      <details>
+        <summary>My child is 7 — is this really appropriate for them?</summary>
+        <p class="faq-a">Absolutely. The Sprout Track (ages 7–11) is designed specifically for young writers with age-appropriate coaching, pacing, and formats. Picture books, illustrated stories, and short chapter books are all welcome. The coaching meets your child exactly where they are.</p>
+      </details>
+      <details>
+        <summary>Does my child need any writing experience?</summary>
+        <p class="faq-a">None at all. We accept complete beginners at every age. What matters is that your child has something they want to say — a story, an idea, a message. We teach them everything else.</p>
+      </details>
+      <details>
+        <summary>Is the $597 really all-inclusive? No hidden publishing fees?</summary>
+        <p class="faq-a">Yes — the cohort fee covers everything including ISBN, cover design, formatting, and global distribution. There are no additional fees after enrollment. What you see is what you pay.</p>
+      </details>
+      <details>
+        <summary>How much time does this require per week?</summary>
+        <p class="faq-a">Approximately 2.5 hours per week — one 90-minute leadership session and one 60-minute manuscript session. Additional personal writing time is encouraged but flexible around your family's schedule.</p>
+      </details>
+      <details>
+        <summary>Who owns the book when it's published?</summary>
+        <p class="faq-a">Your child does. They retain full rights and receive royalties through our publishing partner Veritas Publishing. It is their book — permanently and completely.</p>
+      </details>
+      <details>
+        <summary>Can I apply on my child's behalf?</summary>
+        <p class="faq-a">Yes. Parents are welcome to begin the application. Both the applicant and a parent or guardian are required for the interview before a spot is confirmed — we want to make sure the whole family is aligned.</p>
+      </details>
+      <details>
+        <summary>What if my child loses motivation halfway through?</summary>
+        <p class="faq-a">That's exactly what the structure prevents. Weekly coaching, cohort accountability, and a dedicated writing mentor all keep your child on track. No one crosses the finish line alone — that's the whole point of the cohort model.</p>
+      </details>
+      <details>
+        <summary>Will the cohorts be mixed ages or separated by track?</summary>
+        <p class="faq-a">Each session is run within age tracks — your 9-year-old won't be in the same manuscript room as a 17-year-old. Track placement is confirmed during the interview process to make sure every child is with peers at their level.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <span class="sec-eye reveal">Ready to apply</span>
+  <h2 class="reveal">Your child's book is waiting<br>to be written.</h2>
+  <p class="sec-sub reveal" style="margin-bottom:2rem">Cohort 001 spots are limited across all three tracks. If your child has ever talked about writing a book — or if you know they have a story worth telling — this is the moment.</p>
+  <a href="https://tally.so/r/D4ALWp" target="_blank" class="cta-primary reveal">Apply for your child — start here</a>
+  <span class="cta-note reveal" style="margin-top:12px;display:block">Application takes 10 minutes &nbsp;·&nbsp; Interview scheduled within 5–7 business days</span>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">INK &amp; IMPACT™ — by Elevate 360 Collective</span>
+  <p class="footer-sub">A selective leadership publishing accelerator for young leaders ages 7–18.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
